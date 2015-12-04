@@ -1,11 +1,10 @@
 %  05 jan 94  ksk
-\Version {NORBAS}                                \Routid{E210}
-\Keywords{POLYNOMIAL SPLINE NORMALIZED B-SPLINE APPROXIMATION
-INTERPOLATION LEAST SQUARES VARIATION DIMINISHING}
+\Version{NORBAS}                                \Routid{E210}
+\Keywords{POLYNOMIAL SPLINE NORMALIZED B-SPLINE APPROXIMATION INTERPOLATION LEAST SQUARES VARIATION DIMINISHING}
 \Author{W. M\"onch, B. Schorr}                   \Library{MATHLIB}
 \Submitter{W. M\"onch}                           \Submitted{15.03.1993}
 \Language{Fortran}                               \Revised{}
-\Cernhead {Polynomial Splines / Normalized B-Splines}
+\Cernhead{Polynomial Splines / Normalized B-Splines}
 {\tt NORBAS} ({\tt NOR}malized {\tt BA}sis {\tt S}plines) is a portable
 collection of subprograms for various calculations with polynomial
 splines in one dimension ({\bf 1D}) and in two dimensions ({\bf 2D}).
@@ -106,7 +105,7 @@ $$c_i \ = \ f(x_i); \qquad x_i \ = \ (t_{i+1}+\cdots+t_{i+k})/k
 \end{DL}
 $$ z \ = \ s(x,y) \ = \ \sum_{i=1}^{mx-kx-1}\,\sum_{j=1}^{my-ky-1}\,
 c_{i,j}\,B_{i,j}(x,y).$$
- 
+
 {\bf Spline interpolation} to a data set: \\
 Given a data set $\{x_{lx},y_{ly},z_{lx,ly}\}_{lx=1, \ldots ,nx ;
 ly=1, \ldots , ny}$ ; determine coefficients
@@ -299,7 +298,7 @@ External References:
 \Usage
 For $\mathtt{t = R}$ (type {\tt REAL}),
 $\mathtt{t = D}$ (type {\tt DOUBLE PRECISION}):
- 
+
 {\bf (K) Knots}
 \begin{verbatim}
     CALL tSPKN1(K,M,A,B,T,NERR)
@@ -569,18 +568,18 @@ and \quad $\displaystyle \int_0^x s(\xi)d\xi$ \quad for $x=0(0.1)1$.
       DATA XI / 0D0,0.20D0,0.40D0,0.60D0,0.80D0,1.00D0 /
       DATA YI / 1D0,0.66D0,0.47D0,0.38D0,0.35D0,0.34D0 /
       M=N+K+1
- 
+
       CALL DSPIN1(K,N,XI,YI,KNOT,T,C,W,IW,NERR)
       CALL DSPCD1(K,M,NDER,T,C,D,NERR)
- 
+
       WRITE(6,1000) K,N,(T(I),I=1,M)
       DO 20 J=0,10
       X=J/1D1
- 
+
       SPL0=DSPPS1(K,M, 0,X,T,C,NERR)
       SPL1=DSPPS1(K,M, 1,X,T,D,NERR)
       SPLI=DSPPS1(K,M,-1,X,T,C,NERR)
- 
+
    20 WRITE(6,1010) J,X,SPL0,SPL1,SPLI
  1000 FORMAT(...)
  1010 FORMAT(...)
@@ -589,7 +588,7 @@ and \quad $\displaystyle \int_0^x s(\xi)d\xi$ \quad for $x=0(0.1)1$.
 \begin{verbatim}
  DEGREE OF POLYNOMIAL SPLINE:  2          NUMBER OF DATA POINTS:  6
  KNOTS T :        0.00  0.00  0.00  0.25  0.50  0.75  1.00  1.00  1.00
- 
+
      J        X         S(X)          DS(X)         IN(X)
      0      0.00      1.000000     -2.119921      0.000000
      1      0.10      0.809004     -1.700000      0.090100

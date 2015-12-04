@@ -1,15 +1,13 @@
-\Version {LEAMAX}                                \Routid{D501}
-\Keywords{CONSTRAIN, NON, LINEAR, LEAST, SQUARES, MAXIMUM, LIKELIHOOD,
-DATA, FIT, FITTING, ESTIMATION}
+\Version{LEAMAX}                                \Routid{D501}
+\Keywords{CONSTRAIN, NON, LINEAR, LEAST, SQUARES, MAXIMUM, LIKELIHOOD, DATA, FIT, FITTING, ESTIMATION}
 \Author{W. M\"onch, B. Schorr}                   \Library{MATHLIB}
 \Submitter{W. M\"onch}                           \Submitted{15.03.1993}
 \Language{Fortran}                              %\Revised{}
-\Cernhead {Constrained Non-Linear Least Squares and Maximum
-            Likelihood Estimation}
+\Cernhead{Constrained Non-Linear Least Squares and Maximum Likelihood Estimation}
 {\tt LEAMAX} is a portable collection of
 subprograms for solving general non-linear least squares problems,
 non-linear data fitting problems, and maximum likelihood estimations.
- 
+
 Subroutine subprograms
 {\tt RSUMSQ}, {\tt RFUNFT}, {\tt RMAXLK} and
 {\tt DSUMSQ}, {\tt DFUNFT}, {\tt DMAXLK}
@@ -39,7 +37,7 @@ weights $\sigma_i$ $(i=1,...,m)$ has to be provided,
 whereas for the maximum likelihood estimation {\bf (M)}, the set of data
 points $\{(x_i) | x_i \in \mathbf{R^k},i=1,...,m\}$ belongs to the input
 of the problem.
- 
+
 These subprograms are based on the algorithm described by
 Mor\'e (Ref. 1) for finding the solution of a general non-linear least
 squares problem by using the Levenberg-Marquardt algorithm.
@@ -51,7 +49,7 @@ The necessary derivatives can either be supplied by the user
 In the case of a non-linear data fitting problem, approximations to
 the covariance matrix and the standard deviations of the model
 parameter estimators are also provided.
- 
+
 On computers other than CDC or Cray, only the double-precision versions
 {\tt DSUMSQ}, {\tt DFUNFT}, {\tt DMAXLK} are available. On CDC and
 Cray computers, only the single-precision versions
@@ -86,7 +84,7 @@ External References:
 \Usage
 For $\mathtt{t = R}$ (type {\tt REAL}),
 $\mathtt{t = D}$ (type {\tt DOUBLE PRECISION}):
- 
+
 {\bf (S) General non-linear least squares problem}
 \begin{verbatim}
     CALL tSUMSQ(SUB,M,N,NC,A,AL,AU,MODE,EPS,MAXIT,IPRT,
@@ -210,12 +208,12 @@ to compute the covariance matrix. \\
 Case {\bf (M)}: the routine {\tt tSINV} (F012) was unable to solve
 the normal equations.}
 \end{DLtt}
- 
+
 \newpage
 \Examples
 For the user-supplied {\tt SUBROUTINE} subprogram {\tt SUB} write for
 instance in the case $\mathtt{t = D}$: \\
- 
+
 {\bf (S)} Objective function (Brown badly-scaled function, $n=2,\,m=3$):
 $$ \varphi_S(a) \ = \ \frac{1}{2} \:
 \left[(a_1-10^6)^2+(a_2-2\cdot 10^{-6})^2+(a_1a_2-2)^2 \right] $$ .
@@ -237,7 +235,7 @@ $$ \varphi_S(a) \ = \ \frac{1}{2} \:
       RETURN
       END
 \end{verbatim}
- 
+
 {\bf (F)} Objective function (Bard function, $n=3,\,m=15,\,k=3$):
 $$ \varphi_F(a) \ = \ \frac{1}{2} \, \sum_{i=1}^m \:
 \left[y_i - \left(a_1+ \frac{x_{1,i}}{x_{2,i}\,a_2+x_{3,i}\,a_3}\right)
@@ -260,7 +258,7 @@ $$ \varphi_F(a) \ = \ \frac{1}{2} \, \sum_{i=1}^m \:
       RETURN
       END
 \end{verbatim}
- 
+
 \newpage
 {\bf (M)} Objective function ($n=1,\,m=100,\,k=1$):
 $$ \varphi_M(a) \ = \ -\:\sum_{i=1}^m\, \ln \: \left\{
@@ -280,11 +278,11 @@ $$ \varphi_M(a) \ = \ -\:\sum_{i=1}^m\, \ln \: \left\{
       RETURN
       END
 \end{verbatim}
- 
+
 In all three cases the parameters {\tt K} , {\tt N} ,
 {\tt A} , {\tt M} , {\tt MODE} , {\tt NERROR} are as declared
 above. The other parameters are the following:
- 
+
 \begin{DLtt}{1234}
 \item[F] (Type according to {\tt t})
 Case {\bf (S)}: one-dimensional array of length $\mathtt{\ge M}$.
@@ -308,7 +306,7 @@ $\mathtt{ \ge N}$.
 one-dimensional array of length $\mathtt{\ge K}$ for {\bf one}
 data point $x_i \in \mathbf{R^k}$ (in contrast to above declaration).
 \end{DLtt}
- 
+
 \Refer
 \begin{enumerate}
 \item J.J. Mor\'e, The Levenberg-Marquardt algorithm: Implementation

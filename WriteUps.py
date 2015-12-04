@@ -221,20 +221,29 @@ class ShortWriteUp(Base, WriteUp):
 
     @staticmethod
     def parseFromTex(filename):
-        f = open(filename)
         shortWriteUp = ShortWriteUp()
         shortWriteUp.filename = filename
-        with f:
+        #logger.info("opening"+filename+"for parsing")
+        with open(filename) as f:
             tex = f.read()
+            #logger.info("generated tex object")
             shortWriteUp.authorName = auxTools.mapTexToUnicode(re.search(r'.*\\Author{(.*?)}', tex).group(1))
+            #logger.info('Author: ' + shortWriteUp.authorName)
             # TODO: After getting authorName I should look for the author in the database
             shortWriteUp.ID = auxTools.mapTexToUnicode(re.search(r'.*\\Routid{(.*?)}', tex).group(1))
+            #logger.info('ID: ' + shortWriteUp.ID)
             shortWriteUp.keywords = auxTools.mapTexToUnicode(re.search(r'.*\\Keywords{(.*?)}', tex).group(1))
+            #logger.info('keywords: ' + shortWriteUp.keywords)
             shortWriteUp.library = auxTools.mapTexToUnicode(re.search(r'.*\\Library{(.*?)}', tex).group(1))
+            #logger.info('library: ' + shortWriteUp.library)
             shortWriteUp.submitter = auxTools.mapTexToUnicode(re.search(r'.*\\Submitter{(.*?)}', tex).group(1))
+            #logger.info('submitter: ' + shortWriteUp.submitter)
             shortWriteUp.submitted = auxTools.mapTexToUnicode(re.search(r'.*\\Submitted{(.*?)}', tex).group(1))
+            #logger.info('submitted: ' + shortWriteUp.submitted)
             shortWriteUp.language = auxTools.mapTexToUnicode(re.search(r'.*\\Language{(.*?)}', tex).group(1))
+            #logger.info('language: ' + shortWriteUp.language)
             shortWriteUp.name = auxTools.mapTexToUnicode(re.search(r'.*\\Cernhead{(.*?)}', tex).group(1))
+            #logger.info('name: ' + shortWriteUp.name)
             shortWriteUp.rdef = re.findall(r'\\Rdef{(.*?)}', tex)
         shortWriteUp.parsed = True
         return shortWriteUp

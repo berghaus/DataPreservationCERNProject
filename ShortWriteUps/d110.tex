@@ -3,7 +3,7 @@
 \Author{K.S. K\"olbig}                          \Library{MATHLIB}
 \Submitter{}                                     \Submitted{01.12.1988}
 \Language{Fortran}                        \Revised{15.03.1993}
-\Cernhead {Gaussian Quadrature for Multiple Integrals}
+\Cernhead{Gaussian Quadrature for Multiple Integrals}
 Function subprogram packages {\tt RGMLT} and {\tt DGMLT}
 compute an approximate value of an n-dimensional integral of the form
 \\[4mm]
@@ -136,7 +136,7 @@ for instance
   1 F2(L)=R*EXP(X(2))*RGMLT1(FSUB1,0.,R,4,6,X)
     RETURN
     END
- 
+
     SUBROUTINE FSUB1(M,U1,F1,X)
     DIMENSION U1(*),F1(*),X(2)
     DO 1 L = 1,M
